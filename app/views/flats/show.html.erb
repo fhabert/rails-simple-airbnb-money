@@ -27,10 +27,41 @@
                 <div class="card-show  mt-5">
                     <h4>Details</h4>
                     <div class="d-flex">
-                        <p style="margin-right: 20px;"></i><%= @flat.number_of_guests %></p><i class="fas fa-user-alt">
+                        <p style="margin-right: 20px;"><%= @flat.number_of_guests %> people</p>
+                        <% price = @flat.price_cents / 100 %>
+                        <p style="font-weight: 600;">Amount: £<%= price %>/day</p>
                     </div>
+                </div>
+                <div class="card-show mt-5" data-controller="amount">
+                    <h4>Number of days</h4>
+                    <div class="d-flex align-items-center mb-3" data-counter="<%= @counter%>" id="div-amount" data-controller="amount" data-price-flat="<%= @flat.price%>" data-id-flat="<%= @flat.id%>">
+                        <button class="btn btn-primary sm" id="btn-minus" data-action="click->amount#minus">-</button>
+                        <p class="mx-4" style="margin-top: 0px; margin-bottom: 0px" id="show-amount" data-amount-target="counter">1</p>
+                        <button class="btn btn-primary sm" id="btn-plus" data-action="click->amount#plus">+</button>
+                        <p id="total-amount" class="mx-3" data-amount-target="total">Total: £<%= @flat.price %></p>
+                    </div>
+                    <%= form_tag orders_path do %>
+                        <%= hidden_field_tag 'flat_id', @flat.id %>
+                        <%= hidden_field_tag 'amount_price', "" %>
+                        <%= submit_tag 'Purchase', class: 'btn btn-outline-primary' %>
+                    <% end %>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="d-flex justify-content-around" style="margin-top: 300px">
+    <% if current_user.id != @owner_id %>
+        <%= link_to "Chat", chatrooms_path(flat_id: @flat.id), class:"btn-chatroom", method: :post %>
+    <% else %>
+        <div class="card-show mt-5 p-4">
+        <h2 class="text-center mb-3">You have some new chat for this flat!!</h2>
+            <% if @chatrooms != [] %>
+                <% @chatrooms.each do |chatroom| %>
+                    <% client = User.find(chatroom.client_id) %>
+                    <%= link_to "Chat with #{client.name}", chatroom_path(chatroom.id), class:"btn-chatroom"%>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
 </div>

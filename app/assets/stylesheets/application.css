@@ -14,3 +14,6 @@
  *= require_self
  */
  @import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+ body {
+    margin-bottom: 150px;
+ }

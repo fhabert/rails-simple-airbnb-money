@@ -59,3 +59,31 @@ h2 {
         transition-duration: 100ms;
     }
 }
+
+.cards-flats-saved {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 32px;
+}
+
+.btn-chatroom {
+    border: 2px solid #6A527A;
+    background-color: white;
+    padding: 10px 15px;
+    color: #6A527A;
+    border-radius: 20px;
+    text-align: center;
+    width: 150px;
+    text-decoration: none;
+    &:hover {
+        background-color: #6A527A;
+        color: white;
+        font-weight: 600;
+        border: 2px solid transparent;
+        transition-delay: 150ms;
+        transition-duration: 100ms;
+    }
+}
+.btn-chatroom a {
+    text-decoration: none;
+}

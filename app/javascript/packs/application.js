@@ -15,3 +15,13 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import { initAmount } from '../components/amount';
+import { initLike } from '../components/btnLike';
+import { initChatroomCable } from '../channels/chatroom_channel';
+
+document.addEventListener('turbolinks:load', () => {
+    // initAmount();
+    initLike();
+    initChatroomCable();
+})
+import "controllers"

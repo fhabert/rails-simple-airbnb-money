@@ -1,25 +1,50 @@
 <div class="container">
     <h1 class="text-center">Welcome to our simple airbnb</h1>
-    <h2 class="text-center">Here are our <%= @counter %> flats</h2>
+    <div class="d-flex justify-content-center align-items-center" data-controller="refresh">
+        <h2 data-refresh-target="nbflats"></h2>
+        <button data-action="click->refresh#update" style="margin-left: 20px;" class="btn btn-outline-primary">Refresh count</button>
+    </div>
     <div class="cards-flat mt-5">
         <% @flats.each do |flat| %>
-            <div class="card-flat" style="width: 400px;">
+            <div class="card-flat" id="flat-<%= flat.id %>" style="width: 400px;">
                 <div class="main-part-card">
                     <img src="<%= flat.url%>" class="card-img-top" height="300">
                     <div class="card-body">
                         <h5 class="card-title"><%= flat.name %></h5>
                         <p><%= flat.address %></p>
                         <div class="d-flex align-items-center justify-content-between">
-                            <p><%= flat.number_of_guests %></p>
+                            <p><%= flat.number_of_guests %> people</p>
+                            <% price = flat.price_cents / 100 %>
+                            <p style="font-weight: 600;">Amount: £<%= price %>/day</p>
                         </div>
                     </div>
                 </div>
                 <div class="infos-card p-3 d-flex align-items-center justify-content-between">
                     <div><%= link_to "More info", flat_path(flat), class: "btn-rounder" %></div>
-                    <div>
-                        <%= link_to "Edit", edit_flat_path(flat), class: "btn-rounder" %>
-                        <%= link_to "Destroy", flat_path(flat), class: "btn-rounder", method: :delete %>
-                    </div>
+                    <% if current_user %>
+                        <% if current_user.id == flat.user_id %>
+                            <div>
+                                <%= link_to "Edit", edit_flat_path(flat), class: "btn-rounder" %>
+                                <%= link_to "Destroy", flat_path(flat), class: "btn-rounder", method: :delete %>
+                            </div>
+                        <% else %>
+                            <% if current_user %>
+                                <% if @flats_liked_id.include?(flat.id) %>
+                                    <%= simple_form_for(root_path, remote: true) do |f| %>
+                                        <%= hidden_field_tag :btn_like, "remove" %>
+                                        <%= hidden_field_tag :flat_id, flat.id %>
+                                        <%= f.submit "❤", class: "btn btn-like",  style: "background: transparent;" %>
+                                    <% end %>
+                                <% else %>
+                                    <%= simple_form_for(root_path, remote: true) do |f| %>
+                                        <%= hidden_field_tag :btn_like, "add" %>
+                                        <%= hidden_field_tag :flat_id, flat.id %>
+                                        <%= f.submit "🤍", class: "btn btn-like",  style: "background: transparent;", remote: true %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>  
                 </div>
             </div>
         <% end %>

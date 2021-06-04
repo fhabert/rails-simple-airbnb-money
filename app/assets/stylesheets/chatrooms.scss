@@ -1,0 +1,18 @@
+// Place all the styles related to the chatrooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.container-messages {
+    background-color: #E6E7EF;
+    margin-top: 50px;
+    padding: 30px;
+}
+.messages-chat {
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px 15px;
+    color: #767CA7;
+    border: 2px solid #585d8a;
+}
+.message-input {
+    margin-top: 20px;
+}
