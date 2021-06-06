@@ -50,18 +50,24 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-around" style="margin-top: 300px">
+<div class="p-4">
+    <div id="map"
+        style="width: 400px; height: 400px;margin-top: 150px;"
+        data-marker="<%= @marker.to_json() %>"
+        data-mapbox-api-key="<%= 'pk.eyJ1IjoiZmhhYmVydCIsImEiOiJja21jaTNwcW4yYnU3MnVudzh4MW1qZG44In0.xPhBbVlkXGGSE1WWb_d_ZA' %>"></div>
+    </div>
+<div class="d-flex justify-content-around" style="margin-top: 100px">
     <% if current_user.id != @owner_id %>
         <%= link_to "Chat", chatrooms_path(flat_id: @flat.id), class:"btn-chatroom", method: :post %>
     <% else %>
-        <div class="card-show mt-5 p-4">
-        <h2 class="text-center mb-3">You have some new chat for this flat!!</h2>
-            <% if @chatrooms != [] %>
+        <% if @chatrooms != [] %>
+            <div class="card-show mt-5 p-4">
+                <h2 class="text-center mb-3">You have some new chat for this flat!!</h2>
                 <% @chatrooms.each do |chatroom| %>
                     <% client = User.find(chatroom.client_id) %>
                     <%= link_to "Chat with #{client.name}", chatroom_path(chatroom.id), class:"btn-chatroom"%>
                 <% end %>
-            <% end %>
-        </div>
+            </div>
+        <% end %>
     <% end %>
 </div>

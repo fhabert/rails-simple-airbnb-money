@@ -18,10 +18,12 @@ require("channels")
 import { initAmount } from '../components/amount';
 import { initLike } from '../components/btnLike';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { initMapbox } from '../components/map';
 
 document.addEventListener('turbolinks:load', () => {
     // initAmount();
     initLike();
     initChatroomCable();
+    initMapbox();
 })
 import "controllers"

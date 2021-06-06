@@ -23,11 +23,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'geocoder'
 # background actions
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-
+gem 'blazer'
 # mail
 gem 'letter_opener', group: :development
 

@@ -38,6 +38,7 @@ Flat.create!(
   price: 75,
   number_of_guests: 3,
   user_id: users_id.sample,
+  address:"paris",
   url: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80'
 )
 Flat.create!(
@@ -47,6 +48,7 @@ Flat.create!(
   price: 105,
   number_of_guests: 3,
   user_id: users_id.sample,
+  address:"spain",
   url: 'https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
 )
 Flat.create!(
@@ -56,6 +58,7 @@ Flat.create!(
   price: 12,
   number_of_guests: 3,
   user_id: users_id.sample,
+  address:"italy",
   url: 'https://images.unsplash.com/photo-1600047509782-20d39509f26d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=904&q=80'
 )
 Flat.create!(
@@ -65,6 +68,7 @@ Flat.create!(
   price: 400,
   number_of_guests: 3,
   user_id: users_id.sample,
+  address:"england",
   url: 'https://images.unsplash.com/photo-1595185584650-3d86a419dc93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80'
 )
 puts "Finish seed"

@@ -39,11 +39,18 @@ class FlatsController < ApplicationController
         @counter = 1
         @owner_id = @flat.user_id
         @chatrooms = Chatroom.where(owner_id: current_user.id, flat_id: @flat.id)
+        if @flat.geocoded?
+            @marker = {lat: @flat.latitude, lng: @flat.longitude,
+            info_window: @flat.name, image_url: helpers.asset_url('sax.jpg') }
+        end
     end
 
     def update
-        @flat.update(flat_params)
-        redirect_to root_path
+        if @flat.update(flat_params)
+            redirect_to root_path
+        else
+            render :edit
+        end
     end
 
     def edit
