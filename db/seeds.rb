@@ -10,6 +10,8 @@ require 'open-uri'
 puts "Creating database"
 Order.destroy_all if Rails.env.development?
 UserFlat.destroy_all if Rails.env.development?
+Message.destroy_all if Rails.env.development?
+Chatroom.destroy_all if Rails.env.development?
 Flat.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?
 
@@ -39,7 +41,7 @@ Flat.create!(
   number_of_guests: 3,
   user_id: users_id.sample,
   address:"paris",
-  url: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80'
+  url: 'https://res.cloudinary.com/dgpj2uzwa/image/upload/v1644334242/photo-1571055107559-3e67626fa8be_y5sskm.jpg'
 )
 Flat.create!(
   name: 'Charmful place to stay at in london',
@@ -49,7 +51,7 @@ Flat.create!(
   number_of_guests: 3,
   user_id: users_id.sample,
   address:"spain",
-  url: 'https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+  url: 'https://res.cloudinary.com/dgpj2uzwa/image/upload/v1644334269/photo-1430285561322-7808604715df_fxiqo5.jpg'
 )
 Flat.create!(
   name: 'Little place of paradise flat london',
@@ -59,7 +61,7 @@ Flat.create!(
   number_of_guests: 3,
   user_id: users_id.sample,
   address:"italy",
-  url: 'https://images.unsplash.com/photo-1600047509782-20d39509f26d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=904&q=80'
+  url: 'https://res.cloudinary.com/dgpj2uzwa/image/upload/v1644334292/photo-1600047509782-20d39509f26d_mn8k1w.jpg'
 )
 Flat.create!(
   name: 'A private country escape with stunning views',
@@ -69,6 +71,6 @@ Flat.create!(
   number_of_guests: 3,
   user_id: users_id.sample,
   address:"england",
-  url: 'https://images.unsplash.com/photo-1595185584650-3d86a419dc93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80'
+  url: 'https://res.cloudinary.com/dgpj2uzwa/image/upload/v1644334311/photo-1595185584650-3d86a419dc93_yjir25.jpg'
 )
 puts "Finish seed"
