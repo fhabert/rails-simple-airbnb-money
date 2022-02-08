@@ -41,7 +41,7 @@ class FlatsController < ApplicationController
         @chatrooms = Chatroom.where(owner_id: current_user.id, flat_id: @flat.id)
         if @flat.geocoded?
             @marker = {lat: @flat.latitude, lng: @flat.longitude,
-            info_window: @flat.name, image_url: helpers.asset_url('sax.jpg') }
+            info_window: @flat.name, image_url: @flat.url }
         end
     end
 
